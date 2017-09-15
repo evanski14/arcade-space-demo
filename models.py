@@ -10,7 +10,7 @@ class Model:
         self.angle = 0
 
     def hit(self, other, hit_size):
-        return(abs(self.x - other.x) <= hit_size)and(abs(self.y - otjer.y) <= hit_size)
+        return(abs(self.x - other.x) <= hit_size)and(abs(self.y - other.y) <= hit_size)
 
 
 class Ship(Model):
@@ -27,7 +27,7 @@ class Ship(Model):
     def switch_direction(self):
         if self.direction == Ship.DIR_HORIZONTAL:
             self.direction == Ship.DIR_VERTICAL
-            self.angle = 0
+            self.angle = 90
         else:
             self.direction = Ship.DIR_HORIZONTAL
             self.angle = -90
@@ -65,6 +65,7 @@ class World:
 
         self.ship = Ship(self,100,100)
         self.gold = Gold(self,400,400)
+        self.score = 0
 
 
     def update(self, delta):
@@ -72,6 +73,7 @@ class World:
 
         if self.ship.hit(self.gold, 15):
             self.gold.random_location()
+            self.score += 1
 
 
     def on_key_press(self, key, key_modifiers):
