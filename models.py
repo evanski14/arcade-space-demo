@@ -26,8 +26,8 @@ class Ship(Model):
 
     def switch_direction(self):
         if self.direction == Ship.DIR_HORIZONTAL:
-            self.direction == Ship.DIR_VERTICAL
-            self.angle = 90
+            self.direction = Ship.DIR_VERTICAL
+            self.angle = 0
         else:
             self.direction = Ship.DIR_HORIZONTAL
             self.angle = -90
